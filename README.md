@@ -20,6 +20,8 @@
 
 * **.NET Blog** - https://devblogs.microsoft.com/dotnet/category/dotnet
 * **.NET MAUI Blog** - https://devblogs.microsoft.com/dotnet/category/maui
+* **Artifacts output layout** - https://learn.microsoft.com/dotnet/core/sdk/artifacts-output
+* **Central Package Management (CPM)** - https://learn.microsoft.com/nuget/consume-packages/Central-Package-Management
 
 ## Code
 
