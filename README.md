@@ -10,6 +10,7 @@
 * **C# Dev Kit** - https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
 * **dotnet-trace** - https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-trace
 * appium
+efcore tools https://learn.microsoft.com/ef/core/get-started/overview/install#get-the-net-core-cli-tools
 
 
 ### Libraries Used
@@ -25,4 +26,12 @@
 
 ## Code
 
-Here :)
+This app will be a way to manage the details of the CPTMSDUG team and they assignments per event.
+
+**Projects**
+
+* **.NET MAUI Mobile app** for the main interactions
+* **ASP.NET Web API** for managing the REST API over the data
+* **EFCore data library** for interacting with the database
+* **Blazor website** to quickly view the CPTMSDUG team
+* **Testing console app** to play with things and to benchmark code
