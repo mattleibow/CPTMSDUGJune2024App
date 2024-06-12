@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Exciting.Mobile.ClientStub": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

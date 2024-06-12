@@ -11,9 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AspireMobile.Hosting" Version="0.7.130-beta" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.0.1" />
     <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
   </ItemGroup>
@@ -24,6 +22,7 @@
     <!-- TODO: 5. API - Add the team api project to the host project -->
     <ProjectReference Include="..\Exciting.TeamApi\Exciting.TeamApi.csproj" />
     <ProjectReference Include="..\Exciting.DatabaseWorker\Exciting.DatabaseWorker.csproj" />
+    <ProjectReference Include="..\Exciting.Mobile.ClientStub\Exciting.Mobile.ClientStub.csproj" />
   </ItemGroup>
 
 </Project>

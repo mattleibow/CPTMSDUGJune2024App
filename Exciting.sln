@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exciting.Database", "Exciti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exciting.DatabaseWorker", "Exciting.DatabaseWorker\Exciting.DatabaseWorker.csproj", "{4222E462-C380-4A99-81E2-6C678B4D89A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exciting.Mobile.ClientStub", "Exciting.Mobile.ClientStub\Exciting.Mobile.ClientStub.csproj", "{5719EC59-E325-48CA-8382-E741B60A7F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exciting.MobileDefaults", "Exciting.MobileDefaults\Exciting.MobileDefaults.csproj", "{0748606C-9A2F-437D-AF29-9C70FDC83B05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,14 @@ Global
 		{4222E462-C380-4A99-81E2-6C678B4D89A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4222E462-C380-4A99-81E2-6C678B4D89A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4222E462-C380-4A99-81E2-6C678B4D89A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5719EC59-E325-48CA-8382-E741B60A7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5719EC59-E325-48CA-8382-E741B60A7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5719EC59-E325-48CA-8382-E741B60A7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5719EC59-E325-48CA-8382-E741B60A7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0748606C-9A2F-437D-AF29-9C70FDC83B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0748606C-9A2F-437D-AF29-9C70FDC83B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0748606C-9A2F-437D-AF29-9C70FDC83B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0748606C-9A2F-437D-AF29-9C70FDC83B05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

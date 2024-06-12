@@ -16,6 +16,7 @@
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Exciting.Mobile</RootNamespace>
 		<UseMaui>true</UseMaui>
+		<UseMauiCompat>false</UseMauiCompat>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -58,8 +59,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Exciting.MobileDefaults\Exciting.MobileDefaults.csproj" />
+		<ProjectReference Include="..\Exciting.TeamClient\Exciting.TeamClient.csproj" />
 	</ItemGroup>
 
 </Project>

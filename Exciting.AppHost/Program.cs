@@ -21,6 +21,9 @@ var website = builder
     .WithExternalHttpEndpoints()
     .WithReference(teamApi);
 
+builder.AddMobileProject("mobile", "../Exciting.Mobile")
+    .WithReference(teamApi);
+
 var app = builder.Build();
 
 app.Run();
