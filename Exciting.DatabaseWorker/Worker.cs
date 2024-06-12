@@ -42,6 +42,7 @@ public class Worker(
             throw;
         }
 
+        // WORAROUND: VSCode terminates everything if this runs
         // lifetime.StopApplication();
     }
 }
