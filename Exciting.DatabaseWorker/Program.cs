@@ -1,5 +1,6 @@
 using Exciting.Database;
 using Exciting.DatabaseWorker;
+using Microsoft.EntityFrameworkCore;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -13,7 +14,10 @@ builder.Services
     .AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource(Worker.ActivitySourceName));
 
-builder.AddSqlServerDbContext<ExcitingDbContext>("excitingdb");
+builder.Services.AddDbContext<ExcitingDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ExcitingDb"));
+});
 
 var host = builder.Build();
 host.Run();

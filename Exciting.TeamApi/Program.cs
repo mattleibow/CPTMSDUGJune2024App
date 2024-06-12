@@ -1,8 +1,12 @@
 using Exciting.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddSqlServerDbContext<ExcitingDbContext>("excitingdb");
+builder.Services.AddDbContext<ExcitingDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ExcitingDb"));
+});
 
 // TODO Add service defaults & Aspire components.
 builder.AddServiceDefaults();

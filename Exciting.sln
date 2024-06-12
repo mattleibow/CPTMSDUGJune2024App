@@ -2,8 +2,6 @@
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.0.0
 MinimumVisualStudioVersion = 17.8.0.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exciting.AppHost", "Exciting.AppHost\Exciting.AppHost.csproj", "{2A49868D-ADF0-4F64-A070-ABFE33808FBB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exciting.ServiceDefaults", "Exciting.ServiceDefaults\Exciting.ServiceDefaults.csproj", "{B4E41B18-953B-4FF5-B76B-41A82AE530B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exciting.Website", "Exciting.Website\Exciting.Website.csproj", "{F68B32CE-18A1-42D0-A0DF-E7E66C1C6F20}"
@@ -30,10 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2A49868D-ADF0-4F64-A070-ABFE33808FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A49868D-ADF0-4F64-A070-ABFE33808FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A49868D-ADF0-4F64-A070-ABFE33808FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A49868D-ADF0-4F64-A070-ABFE33808FBB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4E41B18-953B-4FF5-B76B-41A82AE530B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4E41B18-953B-4FF5-B76B-41A82AE530B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E41B18-953B-4FF5-B76B-41A82AE530B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
