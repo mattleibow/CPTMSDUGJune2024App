@@ -1,4 +1,4 @@
-using Exciting.Website.ApiClients;
+using Exciting.TeamClient;
 using Exciting.Website.Components;
 
 var builder = WebApplication.CreateBuilder(args);

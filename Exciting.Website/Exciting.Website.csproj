@@ -9,6 +9,7 @@
   <ItemGroup>
     <!-- TODO: 3. WEB - Add the defaults project to the web project -->
     <ProjectReference Include="..\Exciting.ServiceDefaults\Exciting.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Exciting.TeamClient\Exciting.TeamClient.csproj" />
   </ItemGroup>
 
 </Project>
