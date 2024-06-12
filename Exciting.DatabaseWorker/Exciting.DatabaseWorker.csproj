@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-Exciting.DatabaseWorker-31a809be-2ae5-484c-a66e-0e12983d72a4</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- TODO: 3. WEB - Add the defaults project to the web project -->
+    <ProjectReference Include="..\Exciting.ServiceDefaults\Exciting.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Exciting.TeamModel\Exciting.TeamModel.csproj" />
+    <ProjectReference Include="..\Exciting.Database\Exciting.Database.csproj" />
+  </ItemGroup>
+
+</Project>

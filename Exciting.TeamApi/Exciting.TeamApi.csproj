@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- TODO: 3. WEB - Add the defaults project to the web project -->
+    <ProjectReference Include="..\Exciting.ServiceDefaults\Exciting.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Exciting.TeamModel\Exciting.TeamModel.csproj" />
+    <ProjectReference Include="..\Exciting.Database\Exciting.Database.csproj" />
+  </ItemGroup>
+
+</Project>
