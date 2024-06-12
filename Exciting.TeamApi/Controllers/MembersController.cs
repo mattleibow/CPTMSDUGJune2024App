@@ -1,66 +1,41 @@
-﻿using Exciting.TeamModel;
+﻿using Exciting.Database;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+using TeamMemberDto = Exciting.TeamModel.TeamMember;
 
 namespace Exciting.TeamApi;
 
 [Route("members")]
 [ApiController]
-public class MembersController : ControllerBase
+public class MembersController(ExcitingDbContext dbContext) : ControllerBase
 {
-    static readonly string[] summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
     // GET: /members
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TeamMember>>> GetMembers()
+    public async Task<ActionResult<IEnumerable<TeamMemberDto>>> GetMembers()
     {
-        // simulate a real thing hitting the DB
-        await Task.Delay(500);
+        var entities = await dbContext.Members.ToArrayAsync();
 
-        var forecast =  Enumerable
-            .Range(1, 7)
-            .Select(index =>
-                new TeamMember
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
+        var dtos = entities
+            .Select(e => new TeamMemberDto(e.Id, e.FirstName, e.LastName))
             .ToArray();
 
-        return forecast;
+        return dtos;
     }
 
+    // GET: /members/1
+    [HttpGet("{id}")]
+    public async Task<ActionResult<TeamMemberDto>> GetMembers(int id)
+    {
+        var entity = await dbContext.Members.FindAsync(id);
 
-    // private readonly TicketContext _context;
+        if (entity is null)
+            return NotFound();
 
-    // public SupportTicketsController(TicketContext context)
-    // {
-    //     _context = context;
-    // }
+        var dto = new TeamMemberDto(entity.Id, entity.FirstName, entity.LastName);
 
-    // // GET: api/SupportTickets
-    // [HttpGet]
-    // public async Task<ActionResult<IEnumerable<SupportTicket>>> GetTickets()
-    // {
-    //     return await _context.Tickets.ToListAsync();
-    // }
-
-    // // GET: api/SupportTickets/5
-    // [HttpGet("{id}")]
-    // public async Task<ActionResult<SupportTicket>> GetSupportTicket(int id)
-    // {
-    //     var supportTicket = await _context.Tickets.FindAsync(id);
-
-    //     if (supportTicket == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     return supportTicket;
-    // }
+        return dto;
+    }
 
     // // PUT: api/SupportTickets/5
     // // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

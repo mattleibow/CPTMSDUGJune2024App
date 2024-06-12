@@ -7,20 +7,19 @@ public class TeamApiClient(HttpClient httpClient)
 {
     public async Task<TeamMember[]> GetMembersAsync(int maxItems = 10, CancellationToken cancellationToken = default)
     {
-        List<TeamMember>? forecasts = null;
+        var members = new List<TeamMember>();
 
-        await foreach (var forecast in httpClient.GetFromJsonAsAsyncEnumerable<TeamMember>("/members", cancellationToken))
+        await foreach (var member in httpClient.GetFromJsonAsAsyncEnumerable<TeamMember>("/members", cancellationToken))
         {
-            if (forecasts?.Count >= maxItems)
+            if (members.Count >= maxItems)
                 break;
 
-            if (forecast is not null)
-            {
-                forecasts ??= [];
-                forecasts.Add(forecast);
-            }
+            if (member is null)
+                continue;
+
+            members.Add(member);
         }
 
-        return forecasts?.ToArray() ?? [];
+        return members.ToArray();
     }
 }

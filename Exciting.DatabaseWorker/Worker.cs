@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Exciting.Database;
-
+using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Trace;
 
 namespace Exciting.DatabaseWorker;
@@ -22,11 +22,19 @@ public class Worker(
             using var scope = scopeFactory.CreateScope();
 
             var context = scope.ServiceProvider.GetRequiredService<ExcitingDbContext>();
-            await context.Database.EnsureCreatedAsync(stoppingToken);
 
-            // using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
-            // await context.Database.MigrateAsync(stoppingToken);
-            // await transaction.CommitAsync(stoppingToken);
+            var strategy = new SqlServerRetryingExecutionStrategy(
+                context,
+                maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(5), errorNumbersToAdd: [ 0 ]);
+
+            await strategy.ExecuteAsync(async () =>
+            {
+                await context.Database.EnsureCreatedAsync(stoppingToken);
+
+                // using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
+                // await context.Database.MigrateAsync(stoppingToken);
+                // await transaction.CommitAsync(stoppingToken);
+            });
         }
         catch (Exception ex)
         {

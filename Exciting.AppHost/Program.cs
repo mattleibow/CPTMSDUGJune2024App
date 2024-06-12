@@ -2,7 +2,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 // TODO
 var db = builder
-    .AddSqlServerEdge("db", port: 1433) // use the same port as DB tools
+    .AddSqlServerEdge("sqlserver", port: 1433) // use the same port as DB tools
     .AddDatabase("excitingdb")
     .WithEndpoint(port: 14330);
 
