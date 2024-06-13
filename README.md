@@ -11,7 +11,16 @@
 * **dotnet-trace** - https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-trace
 * appium
 efcore tools https://learn.microsoft.com/ef/core/get-started/overview/install#get-the-net-core-cli-tools
+efcore - https://learn.microsoft.com/ef/core/
 sql on linux - https://learn.microsoft.com/sql/linux/sql-server-linux-overview
+dev tunnels - https://learn.microsoft.com/azure/developer/dev-tunnels/
+profiling apps - https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps
+aspire - https://learn.microsoft.com/dotnet/aspire
+aspire - https://learn.microsoft.com/dotnet/maui
+diagnostics - https://learn.microsoft.com/dotnet/core/diagnostics
+aspire-samples - https://github.com/dotnet/aspire-samples
+aspire-docs-samples - https://github.com/MicrosoftDocs/aspire-docs-samples
+docker - https://www.docker.com/
 
 
 ### Libraries Used

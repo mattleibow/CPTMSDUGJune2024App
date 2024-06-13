@@ -29,11 +29,37 @@ public class Worker(
 
             await strategy.ExecuteAsync(async () =>
             {
+                // Ensure the database is created
                 await context.Database.EnsureCreatedAsync(stoppingToken);
 
-                // using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
-                // await context.Database.MigrateAsync(stoppingToken);
-                // await transaction.CommitAsync(stoppingToken);
+                // Migrate the database to the latest version
+                {
+                    // using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
+                    // await context.Database.MigrateAsync(stoppingToken);
+                    // await transaction.CommitAsync(stoppingToken);
+                }
+
+                // Seed the database with some data
+                if (!context.Members.Any())
+                {
+                    var members = new[]
+                    {
+                        new TeamMember { FirstName = "Allan", LastName = "Pead" },
+                        new TeamMember { FirstName = "Carike", LastName = "Botha" },
+                        new TeamMember { FirstName = "Dustyn", LastName = "Lightfoot" },
+                        new TeamMember { FirstName = "Hennie", LastName = "Francis" },
+                        new TeamMember { FirstName = "Louise", LastName = "van der Bijl" },
+                        new TeamMember { FirstName = "Matthew", LastName = "Leibowitz" },
+                        new TeamMember { FirstName = "Roma", LastName = "Gupta" },
+                    };
+
+                    using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
+
+                    await context.Members.AddRangeAsync(members, stoppingToken);
+                    await context.SaveChangesAsync(stoppingToken);
+
+                    await transaction.CommitAsync(stoppingToken);
+                }
             });
         }
         catch (Exception ex)

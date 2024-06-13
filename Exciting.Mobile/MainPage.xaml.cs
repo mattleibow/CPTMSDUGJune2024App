@@ -26,9 +26,16 @@ public partial class MainPage : ContentPage
 		else
 			CounterBtn.Text = $"Clicked {count} times";
 
-		var members = await teamApi.GetMembersAsync();
+		try
+		{
+			var members = await teamApi.GetMembersAsync();
 
-		CounterBtn.Text = $"Clicked {count} times. {members.Length} members found.";
+			CounterBtn.Text += $" and {members.Length} members found.";
+		}
+		catch (Exception ex)
+		{
+			CounterBtn.Text += $" with error: {ex.Message}";
+		}
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}

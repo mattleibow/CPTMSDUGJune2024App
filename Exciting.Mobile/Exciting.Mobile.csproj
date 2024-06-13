@@ -14,7 +14,7 @@
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
 		<OutputType>Exe</OutputType>
-		<RootNamespace>Exciting.Mobile</RootNamespace>
+		<RootNamespace>Exciting</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<UseMauiCompat>false</UseMauiCompat>
 		<SingleProject>true</SingleProject>

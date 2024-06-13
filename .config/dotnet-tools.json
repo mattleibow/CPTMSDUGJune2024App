@@ -8,6 +8,34 @@
         "dotnet-ef"
       ],
       "rollForward": false
+    },
+    "dotnet-trace": {
+      "version": "8.0.510501",
+      "commands": [
+        "dotnet-trace"
+      ],
+      "rollForward": false
+    },
+    "dotnet-dsrouter": {
+      "version": "8.0.510501",
+      "commands": [
+        "dotnet-dsrouter"
+      ],
+      "rollForward": false
+    },
+    "dotnet-gcdump": {
+      "version": "8.0.510501",
+      "commands": [
+        "dotnet-gcdump"
+      ],
+      "rollForward": false
+    },
+    "dotnet-stack": {
+      "version": "8.0.510501",
+      "commands": [
+        "dotnet-stack"
+      ],
+      "rollForward": false
     }
   }
 }
