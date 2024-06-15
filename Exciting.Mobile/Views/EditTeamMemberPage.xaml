@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Exciting.Mobile"
+    xmlns:model="clr-namespace:Exciting.TeamModel;assembly=Exciting.TeamModel"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="local:EditTeamMemberViewModel"
+    x:Class="Exciting.Mobile.EditTeamMemberPage"
+    Title="Edit Member">
+
+    <ScrollView Background="Azure">
+        <Grid
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="*,*"
+            RowSpacing="6"
+            ColumnSpacing="6"
+            Padding="24">
+
+            <toolkit:AvatarView
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                WidthRequest="200"
+                HeightRequest="200"
+                ImageSource="{Binding Member.ProfilePicture}"
+                CornerRadius="{Binding Width, Source={RelativeSource Self}}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+
+            <Label
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="{Binding Member.FullName}"
+                FontFamily="OpenSansBold"
+                FontSize="48"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,24" />
+
+            <!-- <toolkit:AvatarView
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                WidthRequest="300"
+                HeightRequest="300"
+                ImageSource="{Binding Member.ProfilePicture}"
+                CornerRadius="{Binding Width, Source={RelativeSource Self}}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+
+            <Label
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="{Binding Member.FullName}"
+                FontFamily="OpenSansBold"
+                FontSize="48"
+                HorizontalTextAlignment="Center"
+                Margin="0,24" /> -->
+
+            <Label
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Text="Personal Information"
+                FontFamily="OpenSansSemiBold"
+                FontSize="18"
+                Margin="0,0,0,12" />
+
+            <Label
+                Grid.Row="3"
+                Text="First Name"
+                FontFamily="OpenSansSemiBold" />
+            <Entry
+                Grid.Row="4"
+                Text="{Binding Member.FirstName}" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="Last Name"
+                FontFamily="OpenSansSemiBold" />
+            <Entry
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding Member.LastName}" />
+
+            <Label
+                Grid.Row="5"
+                Text="Nickname"
+                FontFamily="OpenSansSemiBold" />
+            <Entry
+                Grid.Row="6"
+                Text="{Binding Member.Nickname}" />
+
+            <Label
+                Grid.Row="7"
+                Text="Bio"
+                FontFamily="OpenSansSemiBold" />
+            <Entry
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Text="{Binding Member.Bio}" />
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>without bootstrap</title>
+    <script src="jquery-3.4.1.slim.min.js"></script>
+    <link href="summernote-lite.min.css" rel="stylesheet">
+    <script src="summernote-lite.min.js"></script>
+    <script src="_hwv/HybridWebView.js"></script>
+  </head>
+  <body>
+    <div id="summernote"></div>
+    <script>
+
+      // send the content to the .NET object with a delay to
+      // avoid sending too many messages while the user is typing
+      var changeTimeout = undefined;
+      function onChangeCallback(contents, $editable) {
+        if (changeTimeout) {
+          clearTimeout(changeTimeout);
+        }
+        changeTimeout = setTimeout(function() {
+          var params = [ contents ];
+          HybridWebView.SendInvokeMessageToDotNet('UpdateTaskNotes', params);
+        }, 500);
+      }
+
+      // initialize summernote
+      $('#summernote').summernote({
+        callbacks: {
+          onChange: onChangeCallback
+        }
+      });
+
+      // start in fullscreen (fill the webview)
+      $('#summernote').summernote('fullscreen.toggle');
+
+    </script>
+  </body>
+</html>

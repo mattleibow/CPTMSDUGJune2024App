@@ -44,13 +44,13 @@ public class Worker(
                 {
                     var members = new[]
                     {
-                        new TeamMember { FirstName = "Allan", LastName = "Pead" },
-                        new TeamMember { FirstName = "Carike", LastName = "Botha" },
-                        new TeamMember { FirstName = "Dustyn", LastName = "Lightfoot" },
-                        new TeamMember { FirstName = "Hennie", LastName = "Francis" },
-                        new TeamMember { FirstName = "Louise", LastName = "van der Bijl" },
-                        new TeamMember { FirstName = "Matthew", LastName = "Leibowitz" },
-                        new TeamMember { FirstName = "Roma", LastName = "Gupta" },
+                        new TeamMember { FirstName = "Roma", LastName = "Gupta", Tasks = { new TaskItem { Title = "Copilots, PowerPlatform and Copilots in PowerPlatform" } } },
+                        new TeamMember { FirstName = "Matthew", LastName = "Leibowitz", Tasks = { new TaskItem { Title = "Watch time" }, new TaskItem { Title = "Finish up now" } } },
+                        new TeamMember { FirstName = "Hennie", LastName = "Francis", Tasks = { new TaskItem { Title = "Book venue" } } },
+                        new TeamMember { FirstName = "Allan", LastName = "Pead", Tasks = { new TaskItem { Title = "Talk about IoT" }, new TaskItem { Title = "Talk about AI" }, new TaskItem { Title = "Don't water the garden like a pleb" } } },
+                        new TeamMember { FirstName = "Carike", LastName = "Botha", Tasks = { new TaskItem { Title = "Demo that PowerApp" } } },
+                        new TeamMember { FirstName = "Dustyn", LastName = "Lightfoot", Tasks = { new TaskItem { Title = "Conect to the CPTMSDUG stream" } } },
+                        new TeamMember { FirstName = "Louise", LastName = "van der Bijl", Tasks = { new TaskItem { Title = "Make sure Spike wears clothes" } } },
                     };
 
                     using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);

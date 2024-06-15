@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Exciting.Mobile"
+    xmlns:model="clr-namespace:Exciting.TeamModel;assembly=Exciting.TeamModel"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:hwv="clr-namespace:HybridWebView;assembly=HybridWebView"
+    x:DataType="local:EditTaskViewModel"
+    x:Class="Exciting.Mobile.EditTaskPage"
+    Title="Edit Task">
+
+    <ScrollView>
+        <Grid
+            RowDefinitions="Auto,Auto,Auto,*"
+            ColumnDefinitions="*"
+            RowSpacing="6"
+            Padding="24">
+
+            <Label
+                Text="Title"
+                FontFamily="OpenSansSemiBold" />
+            <Entry
+                Grid.Row="1"
+                Text="{Binding TaskItem.Title}" />
+
+            <Label
+                Grid.Row="2"
+                Text="Notes"
+                FontFamily="OpenSansSemiBold" />
+            <hwv:HybridWebView
+                x:Name="notesEditor"
+                Grid.Row="3"
+                HybridAssetRoot="wysiwyg-editor"
+                MainFile="index.html" />
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

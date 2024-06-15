@@ -16,3 +16,14 @@
 # dotnet build -t:run -c Release -f net8.0-android Exciting.Mobile -p:AndroidEnableProfiler=true
 
 # dotnet run --project Exciting.AppHost --launch-profile http
+
+# devtunnel host --port-numbers 7258 --allow-anonymous
+# devtunnel host --port-numbers 7258 --port-numbers 19030 --allow-anonymous --protocol https
+# devtunnel host --port-numbers 7258 --port-numbers 21031 --allow-anonymous --protocol https
+
+# devtunnel delete exciting-tunnel --force
+# devtunnel create exciting-tunnel --allow-anonymous && \
+# devtunnel port create exciting-tunnel --port-number 7258 --protocol https && \
+# devtunnel port create exciting-tunnel --port-number 21031 --protocol https && \
+# devtunnel port create exciting-tunnel --port-number 17048 --protocol https && \
+# devtunnel host exciting-tunnel

@@ -1,8 +1,9 @@
 ﻿using Exciting.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 using TeamMemberDto = Exciting.TeamModel.TeamMember;
+using TaskItemDto = Exciting.TeamModel.TaskItem;
+using Microsoft.EntityFrameworkCore;
 
 namespace Exciting.TeamApi;
 
@@ -14,11 +15,18 @@ public class MembersController(ExcitingDbContext dbContext) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TeamMemberDto>>> GetMembers()
     {
-        var entities = await dbContext.Members.ToArrayAsync();
+        var dtos = new List<TeamMemberDto>();
 
-        var dtos = entities
-            .Select(e => new TeamMemberDto(e.Id, e.FirstName, e.LastName))
-            .ToArray();
+        var query = dbContext
+            .Members
+            .Include(m => m.Tasks)
+            .AsAsyncEnumerable();
+
+        await foreach (var entity in query)
+        {
+            var dto = GetDto(entity);
+            dtos.Add(dto);
+        }
 
         return dtos;
     }
@@ -27,12 +35,17 @@ public class MembersController(ExcitingDbContext dbContext) : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<TeamMemberDto>> GetMembers(int id)
     {
-        var entity = await dbContext.Members.FindAsync(id);
+        var query = dbContext
+            .Members
+            .Include(m => m.Tasks)
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+        var entity = await query;
 
         if (entity is null)
             return NotFound();
 
-        var dto = new TeamMemberDto(entity.Id, entity.FirstName, entity.LastName);
+        var dto = GetDto(entity);
 
         return dto;
     }
@@ -99,4 +112,39 @@ public class MembersController(ExcitingDbContext dbContext) : ControllerBase
     // {
     //     return _context.Tickets.Any(e => e.Id == id);
     // }
+
+    private static TeamMemberDto GetDto(TeamMember entity) =>
+        new()
+        {
+            Id = entity.Id,
+            FirstName = entity.FirstName,
+            LastName = entity.LastName,
+            Nickname = entity.Nickname,
+            Bio = entity.Bio,
+            ProfilePicture = entity.ProfilePicture,
+            Tasks = GetTaskDtos(entity)
+        };
+
+    private static List<TaskItemDto> GetTaskDtos(TeamMember entity)
+    {
+        var tasks = new List<TaskItemDto>();
+
+        foreach (var task in entity.Tasks)
+        {
+            var taskDto = GetTaskDto(task);
+            tasks.Add(taskDto);
+        }
+
+        return tasks;
+    }
+
+    private static TaskItemDto GetTaskDto(TaskItem task) => 
+        new()
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Notes = task.Notes,
+            IsComplete = task.IsComplete,
+            TeamMemberId = task.TeamMemberId
+        };
 }

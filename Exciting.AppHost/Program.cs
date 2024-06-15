@@ -1,8 +1,9 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 // TODO
+var sqlpassword = builder.AddParameter("sqlpassword", secret: true);
 var db = builder
-    .AddSqlServerEdge("sqlserver", port: 1433) // use the same port as DB tools
+    .AddSqlServerEdge("sqlserver", port: 1433, password: sqlpassword) // use the same port as DB tools
     .AddDatabase("excitingdb")
     .WithEndpoint(port: 14330);
 
