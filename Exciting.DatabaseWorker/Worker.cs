@@ -53,6 +53,11 @@ public class Worker(
                         new TeamMember { FirstName = "Louise", LastName = "van der Bijl", Tasks = { new TaskItem { Title = "Make sure Spike wears clothes" } } },
                     };
 
+                    foreach (var member in members)
+                    {
+                        member.ProfilePicture = await GetProfilePicture(member.FirstName);
+                    }
+
                     using var transaction = await context.Database.BeginTransactionAsync(stoppingToken);
 
                     await context.Members.AddRangeAsync(members, stoppingToken);
@@ -70,5 +75,12 @@ public class Worker(
 
         // WORAROUND: VSCode terminates everything if this runs
         // lifetime.StopApplication();
+    }
+
+    private async Task<byte[]> GetProfilePicture(string name)
+    {
+        var filename = $"Assets/{name.ToLower()}.jpg";
+        var bytes = await File.ReadAllBytesAsync(filename);
+        return bytes;
     }
 }

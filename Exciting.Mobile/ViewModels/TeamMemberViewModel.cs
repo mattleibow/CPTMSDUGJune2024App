@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using Android.Provider;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Exciting.TeamModel;
 
 namespace Exciting.Mobile;

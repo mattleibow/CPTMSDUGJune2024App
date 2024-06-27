@@ -27,3 +27,12 @@
 # devtunnel port create exciting-tunnel --port-number 21031 --protocol https && \
 # devtunnel port create exciting-tunnel --port-number 17048 --protocol https && \
 # devtunnel host exciting-tunnel
+
+
+# docker pull mcr.microsoft.com/azure-sql-edge:latest
+# docker run \
+#     -e "ACCEPT_EULA=Y" \
+#     -e "MSSQL_SA_PASSWORD=MyPass@word" \
+#     -p 1433:1433 \
+#     -d \
+#     mcr.microsoft.com/azure-sql-edge:latest

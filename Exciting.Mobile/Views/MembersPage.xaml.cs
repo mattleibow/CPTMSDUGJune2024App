@@ -1,11 +1,7 @@
-﻿using Exciting.TeamModel;
-
-namespace Exciting.Mobile;
+﻿namespace Exciting.Mobile;
 
 public partial class MembersPage : ContentPage
 {
-	// int count = 0;
-
 	public MembersPage(MembersViewModel viewModel)
 	{
 		InitializeComponent();
