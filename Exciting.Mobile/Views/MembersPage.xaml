@@ -19,7 +19,8 @@
                     >
                     <Border
                         Margin="24,12"
-                        StrokeThickness="0"
+                        StrokeThickness="5"
+                        Stroke="{Binding ProfileColor}"
                         >
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="24" />
@@ -105,7 +106,8 @@
                     ColumnDefinitions="Auto,Auto,Auto,*"
                     RowDefinitions="Auto,Auto"
                     Padding="24,12"
-                    ColumnSpacing="12">
+                    ColumnSpacing="12"
+                    RowSpacing="12">
 
                     <toolkit:AvatarView
                         Grid.RowSpan="2"
@@ -113,19 +115,25 @@
                         Text="{Binding Initial}"
                         FontFamily="OpenSansSemiBold"
                         FontSize="24"
-                        BorderColor="LightBlue"
-                        BackgroundColor="Azure"
-                        BorderWidth="1"
+                        BorderColor="{Binding ProfileColor}"
+                        BorderWidth="5"
+                        WidthRequest="80"
+                        HeightRequest="80"
+                        CornerRadius="20"
                         />
 
                     <Label
                         Grid.Column="1"
                         Text="{Binding FullName}"
                         FontFamily="OpenSansBold"
+                        FontSize="18"
+                        VerticalOptions="End"
                         />
                     <Label
                         Grid.Column="2"
                         Text="{Binding Nickname, StringFormat='({0})', TargetNullValue=''}"
+                        FontSize="18"
+                        VerticalOptions="End"
                         />
 
                     <Label
@@ -135,6 +143,8 @@
                         Text="{Binding Bio, TargetNullValue='no bio yet :('}"
                         FontFamily="OpenSansItalic"
                         Opacity="0.75"
+                        FontSize="16"
+                        VerticalOptions="Start"
                         />
 
                     <Label
