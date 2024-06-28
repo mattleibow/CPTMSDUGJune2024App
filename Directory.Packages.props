@@ -5,30 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="CommunityToolkit.Maui" Version="9.0.1" />
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageVersion Include="EJL.MauiHybridWebView" Version="1.0.0-preview6" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageVersion Include="SkiaSharp.Views.Maui.Controls" Version="3.0.0-preview.3.1" />
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.0.1" />
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="8.0.1" />
     <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageVersion Include="AspireMaui.App" Version="0.7.130-beta" />
     <PackageVersion Include="AspireMobile.Hosting" Version="0.7.130-beta" />
     <PackageVersion Include="AspireMobile.SettingsGenerator" Version="0.7.130-beta" />
+    <PackageVersion Include="CommunityToolkit.Maui" Version="9.0.1" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageVersion Include="EJL.MauiHybridWebView" Version="1.0.0-preview6" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.3.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="8.0.61" />
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.8.1" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.8.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.8.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.8.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.0" />
+    <PackageVersion Include="SkiaSharp.Views.Maui.Controls" Version="3.0.0-preview.3.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
