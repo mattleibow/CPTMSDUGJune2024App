@@ -24,7 +24,7 @@ public partial class MembersViewModel(TeamApiClient api) : INotifyPropertyChange
     public bool IsRefreshing
     {
         get => isRefreshing;
-        private set
+        set
         {
             isRefreshing = value;
             OnPropertyChanged(nameof(IsRefreshing));
@@ -73,7 +73,7 @@ public partial class MembersViewModel(TeamApiClient api) : INotifyPropertyChange
         catch (Exception ex)
         {
             ErrorMessage = "Failed to load members, try again.";
-            Console.WriteLine($"Error loading members: {ex.Message}");
+            Console.WriteLine($"Error loading members: {ex}");
         }
         finally
         {

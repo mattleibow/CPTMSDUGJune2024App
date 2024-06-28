@@ -4,11 +4,11 @@
 
 # dotnet build Exciting.Mobile -f net8.0-maccatalyst -r maccatalyst-arm64 -c Debug
 
-DOTNET_DiagnosticPorts=/tmp/exciting-mobile-port,suspend \
-    ./artifacts/bin/Exciting.Mobile/debug_net8.0-maccatalyst_maccatalyst-arm64/Exciting.Mobile.app/Contents/MacOS/Exciting.Mobile
+# DOTNET_DiagnosticPorts=/tmp/exciting-mobile-port,suspend \
+#     ./artifacts/bin/Exciting.Mobile/debug_net8.0-maccatalyst_maccatalyst-arm64/Exciting.Mobile.app/Contents/MacOS/Exciting.Mobile
 
 
-dotnet trace collect --diagnostic-port /tmp/exciting-mobile-port --format speedscope
+# dotnet trace collect --diagnostic-port /tmp/exciting-mobile-port --format speedscope
 
 
 # /Users/matthew/Library/Android/sdk

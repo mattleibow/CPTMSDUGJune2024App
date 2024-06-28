@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Exciting.TeamClient;
 using CommunityToolkit.Maui;
-using System.Text.RegularExpressions;
 
 namespace Exciting.Mobile;
 
@@ -24,23 +22,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-BoldItalic.ttf", "OpenSansBoldItalic");
 			});
 
-#if DEBUG
-		foreach (var setting in AspireAppSettings.Settings)
-		{
-			if (setting.Value.Contains("localhost"))
-			{
-				// source format is `http[s]://localhost:[port]`
-				// tunnel format is `http[s]://exciting-tunnel-[port].devtunnels.ms`
-				var newVal = Regex.Replace(
-					setting.Value,
-					@"://localhost\:(\d+)(.*)",
-					"://exciting-tunnel-$1.devtunnels.ms$2");
-				AspireAppSettings.Settings[setting.Key] = newVal;
-			}
-		}
-
-		builder.Configuration.AddInMemoryCollection(AspireAppSettings.Settings);
-#endif
+		builder.Configuration.AddAspireApp(AspireAppSettings.Settings, "exciting-tunnel");
 
 		builder.AddAppDefaults();
 

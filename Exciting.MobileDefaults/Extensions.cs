@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -32,6 +33,33 @@ public static class AppDefaultsExtensions
         return builder;
     }
 
+    public static IConfigurationBuilder AddAspireApp(this IConfigurationBuilder builder, Dictionary<string, string> settings, string? devTunnelId = null)
+    {
+        var copy = new Dictionary<string, string>(settings);
+
+        if (!string.IsNullOrWhiteSpace(devTunnelId))
+        {
+            foreach (var setting in copy)
+            {
+                if (setting.Value.Contains("localhost"))
+                {
+                    // source format is `http[s]://localhost:[port]`
+                    // tunnel format is `http[s]://exciting-tunnel-[port].devtunnels.ms`
+                    var newVal = Regex.Replace(
+                        setting.Value,
+                        @"://localhost\:(\d+)(.*)",
+                        $"://{devTunnelId}-$1.devtunnels.ms$2");
+
+                    copy[setting.Key] = newVal;
+                }
+            }
+        }
+
+        builder.AddInMemoryCollection(copy);
+
+        return builder;
+    }
+
     class OpenTelemetryInitializer : IMauiInitializeService
     {
         public void Initialize(IServiceProvider services)
@@ -55,7 +83,7 @@ public static class AppDefaultsExtensions
             .WithMetrics(metrics =>
             {
                 metrics.AddRuntimeInstrumentation()
-                       .AddAppMeters();
+                    .AddAppMeters();
             })
             .WithTracing(tracing =>
             {
@@ -66,9 +94,9 @@ public static class AppDefaultsExtensions
                 }
 
                 tracing
-                       // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
-                       //.AddGrpcClientInstrumentation()
-                       .AddHttpClientInstrumentation();
+                    // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
+                    //.AddGrpcClientInstrumentation()
+                    .AddHttpClientInstrumentation();
             });
 
         builder.AddOpenTelemetryExporters();
