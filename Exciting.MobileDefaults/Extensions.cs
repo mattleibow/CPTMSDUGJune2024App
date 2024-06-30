@@ -41,17 +41,7 @@ public static class AppDefaultsExtensions
         {
             foreach (var setting in copy)
             {
-                if (setting.Value.Contains("localhost"))
-                {
-                    // source format is `http[s]://localhost:[port]`
-                    // tunnel format is `http[s]://exciting-tunnel-[port].devtunnels.ms`
-                    var newVal = Regex.Replace(
-                        setting.Value,
-                        @"://localhost\:(\d+)(.*)",
-                        $"://{devTunnelId}-$1.devtunnels.ms$2");
-
-                    copy[setting.Key] = newVal;
-                }
+                copy[setting.Key] = ReplaceLocalHost(setting.Value, devTunnelId);
             }
         }
 
@@ -60,7 +50,21 @@ public static class AppDefaultsExtensions
         return builder;
     }
 
-    class OpenTelemetryInitializer : IMauiInitializeService
+    private static string ReplaceLocalHost(string uri, string devTunnelId)
+    {
+        // source format is `http[s]://localhost:[port]`
+        // tunnel format is `http[s]://exciting-tunnel-[port].devtunnels.ms`
+
+        var replacement = Regex.Replace(
+            uri,
+            @"://localhost\:(\d+)(.*)",
+            $"://{devTunnelId}-$1.devtunnels.ms$2",
+            RegexOptions.Compiled);
+
+        return replacement;
+    }
+
+    private class OpenTelemetryInitializer : IMauiInitializeService
     {
         public void Initialize(IServiceProvider services)
         {
