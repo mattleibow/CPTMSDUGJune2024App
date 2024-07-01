@@ -104,6 +104,17 @@ dotnet build -t:Run -c Release -f net8.0-android -r android-arm64 -p:AndroidEnab
 dotnet trace collect --format speedscope -p ADD_PID_HERE
 ```
 
+```sh
+# build the maui app
+dotnet build Exciting.Mobile -f net8.0-maccatalyst -r maccatalyst-arm64 -c Debug
+
+# run the app
+DOTNET_DiagnosticPorts=~/exciting-trace,suspend ./artifacts/bin/Exciting.Mobile/debug_net8.0-maccatalyst_maccatalyst-arm64/Exciting.Mobile.app/Contents/MacOS/Exciting.Mobile
+
+# start collecting
+dotnet trace collect --diagnostic-port ~/exciting-trace --format speedscope
+```
+
 ## Benchmark Demo
 
 ```sh
