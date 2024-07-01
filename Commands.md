@@ -1,6 +1,49 @@
 # Commands
 
-## Docker Demo
+## Docker SQL Demo
+
+```sh
+# pull the DB image
+docker pull mcr.microsoft.com/azure-sql-edge:latest
+
+# start the DB container
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 -d mcr.microsoft.com/azure-sql-edge:latest
+```
+
+```sql
+USE master
+
+DROP DATABASE IF EXISTS CPTMSDUG;
+GO
+
+CREATE DATABASE CPTMSDUG;
+GO
+
+USE CPTMSDUG;
+
+CREATE TABLE dbo.Member (ID INT, FullName NVARCHAR(50));
+INSERT INTO dbo.Member VALUES (1, N'Allan Pead');
+INSERT INTO dbo.Member VALUES (2, N'John Wick');
+INSERT INTO dbo.Member VALUES (3, N'John McClane');
+GO
+
+SELECT * FROM dbo.Member;
+GO
+```
+
+```sh
+# start the DB container with persisted data
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 -d -v ${PWD}/sqldata:/var/opt/mssql mcr.microsoft.com/azure-sql-edge:latest
+```
+
+```sql
+USE CPTMSDUG;
+
+SELECT * FROM dbo.Member;
+GO
+```
+
+## Dockerfile Demo
 
 ```sh
 # build docker image
@@ -66,37 +109,4 @@ dotnet trace collect --format speedscope -p ADD_PID_HERE
 ```sh
 # run
 dotnet run -c Release --project Exciting.Benchmarks
-```
-
-```
-// * Summary *
-
-BenchmarkDotNet v0.13.13-nightly.20240601.156, macOS Sonoma 14.5 (23F79) [Darwin 23.5.0]
-Apple M1 Pro, 1 CPU, 8 logical and 8 physical cores
-.NET SDK 8.0.301
-  [Host]   : .NET 8.0.6 (8.0.624.26715), Arm64 RyuJIT AdvSIMD
-  ShortRun : .NET 8.0.6 (8.0.624.26715), Arm64 RyuJIT AdvSIMD
-
-Job=ShortRun  IterationCount=3  LaunchCount=1  
-WarmupCount=3  
-
-| Method                  | Mean     | Error     | StdDev    | Ratio | Gen0     | Gen1     | Gen2     | Allocated | Alloc Ratio |
-|------------------------ |---------:|----------:|----------:|------:|---------:|---------:|---------:|----------:|------------:|
-| CurrentImpl             | 6.442 ms | 0.0613 ms | 0.0034 ms |  1.00 | 906.2500 | 906.2500 | 359.3750 | 1690228 B |       1.000 |
-| NoToArrayImpl           | 9.842 ms | 1.4174 ms | 0.0777 ms |  1.53 |        - |        - |        - |    2028 B |       0.001 |
-| SingleLoopImpl          | 2.809 ms | 1.2141 ms | 0.0665 ms |  0.44 | 906.2500 | 906.2500 | 363.2813 | 1690067 B |       1.000 |
-| SingleLoopNoToArrayImpl | 2.364 ms | 0.4983 ms | 0.0273 ms |  0.37 |        - |        - |        - |     507 B |       0.000 |
-| BestImpl                | 1.458 ms | 0.6455 ms | 0.0354 ms |  0.23 |        - |        - |        - |     425 B |       0.000 |
-
-// * Legends *
-  Mean        : Arithmetic mean of all measurements
-  Error       : Half of 99.9% confidence interval
-  StdDev      : Standard deviation of all measurements
-  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
-  Gen0        : GC Generation 0 collects per 1000 operations
-  Gen1        : GC Generation 1 collects per 1000 operations
-  Gen2        : GC Generation 2 collects per 1000 operations
-  Allocated   : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
-  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
-  1 ms        : 1 Millisecond (0.001 sec)
 ```
