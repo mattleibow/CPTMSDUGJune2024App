@@ -9,22 +9,21 @@
 * efcore tools https://learn.microsoft.com/ef/core/get-started/overview/install#get-the-net-core-cli-tools
 * efcore - https://learn.microsoft.com/ef/core/
 * ef mapping - https://learn.microsoft.com/ef/core/modeling/relationships/mapping-attributes
-* sql on linux - https://learn.microsoft.com/sql/linux/sql-server-linux-overview
-* dev tunnels - https://learn.microsoft.com/azure/developer/dev-tunnels/ && https://devblogs.microsoft.com/dotnet/dev-tunnels-a-game-changer-for-mobile-developers/
+* dev tunnels - https://devblogs.microsoft.com/dotnet/dev-tunnels-a-game-changer-for-mobile-developers/
 * profiling apps - https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps
 * diagnostics - https://learn.microsoft.com/dotnet/core/diagnostics
-* aspire-samples - https://github.com/dotnet/aspire-samples
-* aspire-docs-samples - https://github.com/MicrosoftDocs/aspire-docs-samples
-* docker - https://www.docker.com/
+aspire-docs-samples
 * Community Toolkit MVVM - https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/
 * Community Toolkit MAUI - https://learn.microsoft.com/dotnet/communitytoolkit/maui/
-* mssql - https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql
 * svg repo - https://www.svgrepo.com/
 
 
 ### Libraries Used
 
 * **aspire-mobile** - https://github.com/BretJohnson/aspire-mobile
+
+* aspire-samples - https://github.com/dotnet/aspire-samples
+* aspire-docs-samples - https://github.com/MicrosoftDocs
 
 ### Docs Read
 

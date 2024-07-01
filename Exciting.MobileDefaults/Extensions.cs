@@ -70,7 +70,7 @@ public static class AppDefaultsExtensions
         {
             services.GetService<MeterProvider>();
             services.GetService<TracerProvider>();
-            // TODO: Uncomment when LoggerProvider is public, with OpenTelemetry.Api version 1.9.0
+            // TO DO: Uncomment when LoggerProvider is public, with OpenTelemetry.Api version 1.9.0
             //services.GetService<LoggerProvider>();
         }
     }

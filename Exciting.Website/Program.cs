@@ -3,7 +3,6 @@ using Exciting.Website.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// TODO: 4. WEB - Add the service defaults to the builder
 builder.AddServiceDefaults();
 
 // Add services to the container.
@@ -11,7 +10,6 @@ builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// TODO: X. WEB - Add the API
 builder.Services.AddHttpClient<TeamApiClient>(client =>
 {
     // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.

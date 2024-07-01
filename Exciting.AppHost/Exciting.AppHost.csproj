@@ -17,9 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- TODO: 1. WEB - Add the web project to the host project -->
     <ProjectReference Include="..\Exciting.Website\Exciting.Website.csproj" />
-    <!-- TODO: 5. API - Add the team api project to the host project -->
     <ProjectReference Include="..\Exciting.TeamApi\Exciting.TeamApi.csproj" />
     <ProjectReference Include="..\Exciting.DatabaseWorker\Exciting.DatabaseWorker.csproj" />
     <ProjectReference Include="..\Exciting.Mobile.ClientStub\Exciting.Mobile.ClientStub.csproj" />

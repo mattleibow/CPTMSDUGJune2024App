@@ -4,7 +4,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddSqlServerDbContext<ExcitingDbContext>("excitingdb");
 
-// TODO Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
 builder.Services.AddControllers();

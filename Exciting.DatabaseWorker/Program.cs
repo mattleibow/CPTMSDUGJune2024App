@@ -3,12 +3,10 @@ using Exciting.DatabaseWorker;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-// TODO
 builder.AddServiceDefaults();
 
 builder.Services.AddHostedService<Worker>();
 
-// TODO
 builder.Services
     .AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource(Worker.ActivitySourceName));
