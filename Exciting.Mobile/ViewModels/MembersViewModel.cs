@@ -1,56 +1,24 @@
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Exciting.TeamClient;
 
 namespace Exciting.Mobile;
 
-public partial class MembersViewModel(TeamApiClient api) : INotifyPropertyChanged
+public partial class MembersViewModel(TeamApiClient api) : ObservableObject
 {
-    private ICommand? refreshCommand;
-    private ICommand? changeLayoutCommand;
+    [ObservableProperty]
     private bool isRefreshing;
+
+    [ObservableProperty]
     private string errorMessage = "";
+
+    [ObservableProperty]
     private bool isTilesLayout;
-
-    public ICommand RefreshCommand =>
-        refreshCommand ??= new Command(async () => await Refresh());
-
-    public ICommand ChangeLayoutCommand =>
-        changeLayoutCommand ??= new Command(() => ChangeLayout());
 
     public ObservableCollection<TeamMemberViewModel> Members { get; } = [];
 
-    public bool IsRefreshing
-    {
-        get => isRefreshing;
-        set
-        {
-            isRefreshing = value;
-            OnPropertyChanged(nameof(IsRefreshing));
-        }
-    }
-
-    public string ErrorMessage
-    {
-        get => errorMessage;
-        private set
-        {
-            errorMessage = value;
-            OnPropertyChanged(nameof(ErrorMessage));
-        }
-    }
-
-    public bool IsTilesLayout
-    {
-        get => isTilesLayout;
-        private set
-        {
-            isTilesLayout = value;
-            OnPropertyChanged(nameof(IsTilesLayout));
-        }
-    }
-
+    [RelayCommand]
     private async Task Refresh()
     {
         try
@@ -81,13 +49,9 @@ public partial class MembersViewModel(TeamApiClient api) : INotifyPropertyChange
         }
     }
 
+    [RelayCommand]
     private void ChangeLayout()
     {
         IsTilesLayout = !IsTilesLayout;
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
