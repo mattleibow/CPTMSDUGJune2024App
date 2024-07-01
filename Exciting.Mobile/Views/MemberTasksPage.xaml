@@ -67,6 +67,8 @@
                         Grid.Row="1"
                         Text="{Binding Notes, TargetNullValue='no notes yet :('}"
                         FontFamily="OpenSansItalic"
+                        MaxLines="2"
+                        LineBreakMode="TailTruncation"
                         Opacity="0.75"
                         />
 

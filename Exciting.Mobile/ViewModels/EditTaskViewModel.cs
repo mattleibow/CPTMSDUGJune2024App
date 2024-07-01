@@ -22,11 +22,22 @@ public partial class EditTaskViewModel(TeamApiClient api) : ObservableObject
         // TaskItem?.RevertChanges();
     }
 
-    public void UpdateTaskNotes(string notes)
+    public void UpdateTaskNotes(string? notes)
     {
         if (TaskItem is null)
             return;
 
-        TaskItem.Notes = notes;
+        if (string.IsNullOrWhiteSpace(notes))
+            TaskItem.Notes = null;
+        else
+            TaskItem.Notes = notes.Trim();
+    }
+
+    public string GetTaskNotes()
+    {
+        if (TaskItem is null)
+            return "";
+
+        return TaskItem.Notes ?? "";
     }
 }

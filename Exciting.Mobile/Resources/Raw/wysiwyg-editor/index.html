@@ -11,6 +11,11 @@
     <div id="summernote"></div>
     <script>
 
+      // create a funtion to set the content from the .NET object
+      function setTaskNotes(contents) {
+        $('#summernote').summernote('code', contents);
+      }
+
       // send the content to the .NET object with a delay to
       // avoid sending too many messages while the user is typing
       var changeTimeout = undefined;
@@ -24,10 +29,17 @@
         }, 500);
       }
 
+      // request the .NET object provide the contents
+      async function onInitCallback() {
+        var contents = await HybridWebView.SendInvokeMessageToDotNetAsync('GetTaskNotes');
+        setTaskNotes(contents);
+      }
+
       // initialize summernote
       $('#summernote').summernote({
         callbacks: {
-          onChange: onChangeCallback
+          onChange: onChangeCallback,
+          onInit: onInitCallback,
         }
       });
 
