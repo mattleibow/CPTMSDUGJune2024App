@@ -1,5 +1,15 @@
 # Commands
 
+## Aspire Demo
+
+```sh
+# start aspire app
+dotnet run --project Exciting.AppHost --launch-profile https
+
+# check manifest
+dotnet run --project Exciting.AppHost --publisher manifest --output-path aspire-manifest.json
+```
+
 ## Docker SQL Demo
 
 ```sh
@@ -54,16 +64,6 @@ docker run -it --rm -p 8080:8080 website-manual
 
 # start dev tunnel
 devtunnel host --allow-anonymous --port-numbers 8080
-```
-
-## Aspire Demo
-
-```sh
-# start aspire app
-dotnet run --project Exciting.AppHost --launch-profile https
-
-# check manifest
-dotnet run --project Exciting.AppHost --publisher manifest --output-path aspire-manifest.json
 ```
 
 ## Aspire + Dev Tunnel Demo
