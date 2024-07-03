@@ -6,12 +6,10 @@
     xmlns:shared="clr-namespace:MyFirstMauiApp.Shared;assembly=MyFirstMauiApp.Shared"
     x:Class="MyFirstMauiApp.HybridPage">
 
-    <Grid>
-        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
-            <BlazorWebView.RootComponents>
-                <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
-            </BlazorWebView.RootComponents>
-        </BlazorWebView>
-    </Grid>
+    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
+        <BlazorWebView.RootComponents>
+            <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
+        </BlazorWebView.RootComponents>
+    </BlazorWebView>
 
 </ContentPage>
