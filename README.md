@@ -10,7 +10,17 @@ dotnet new list
 dotnet new list maui
 
 # create a new maui app
-dotnet new maui-blazor-web
+dotnet new maui-blazor-web -o MyFirstMauiApp
+```
+
+### Temporary Dev Tunnel Demo
+
+```sh
+# start http dev tunnel
+devtunnel host --allow-anonymous --port-numbers 5232
+
+# start https dev tunnel
+devtunnel host --allow-anonymous --port-numbers 7270 --protocol https
 ```
 
 ### Aspire Demo
@@ -21,6 +31,26 @@ dotnet run --project Exciting.AppHost --launch-profile https
 
 # check manifest
 dotnet run --project Exciting.AppHost --publisher manifest --output-path aspire-manifest.json
+```
+
+### Permanent Tunnel Demo
+
+```sh
+# delete any existing/old dev tunnel
+devtunnel delete exciting-tunnel --force
+
+# create dev tunnel
+devtunnel create exciting-tunnel --allow-anonymous
+
+# add the REST API port
+devtunnel port create exciting-tunnel --port-number 7258 --protocol https
+# add the Open Telemetry port (analytics and logs to the dashboard)
+devtunnel port create exciting-tunnel --port-number 21031 --protocol https
+# add the Aspire Dashboard
+devtunnel port create exciting-tunnel --port-number 17048 --protocol https
+
+# start the dev tunnel
+devtunnel host exciting-tunnel
 ```
 
 ### Docker SQL Demo
@@ -77,26 +107,6 @@ docker run -it --rm -p 8080:8080 website-manual
 
 # start dev tunnel
 devtunnel host --allow-anonymous --port-numbers 8080
-```
-
-### Aspire + Dev Tunnel Demo
-
-```sh
-# delete any existing/old dev tunnel
-devtunnel delete exciting-tunnel --force
-
-# create dev tunnel
-devtunnel create exciting-tunnel --allow-anonymous
-
-# add the REST API port
-devtunnel port create exciting-tunnel --port-number 7258 --protocol https
-# add the Open Telemetry port (analytics and logs to the dashboard)
-devtunnel port create exciting-tunnel --port-number 21031 --protocol https
-# add the Aspire Dashboard
-devtunnel port create exciting-tunnel --port-number 17048 --protocol https
-
-# start the dev tunnel
-devtunnel host exciting-tunnel
 ```
 
 ### Profiling Demo

@@ -7,7 +7,7 @@
     x:Class="MyFirstMauiApp.WowPage">
 
     <Grid>
-        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index-mobile.html" StartPath="counter">
+        <BlazorWebView HostPage="wwwroot/index-mobile.html" StartPath="counter">
             <BlazorWebView.RootComponents>
                 <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
             </BlazorWebView.RootComponents>
