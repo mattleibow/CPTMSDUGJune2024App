@@ -16,4 +16,9 @@
         ContentTemplate="{DataTemplate local:HybridPage}"
         Route="hybrid" />
 
+    <ShellContent
+        Title="WOW Factor"
+        ContentTemplate="{DataTemplate local:WowPage}"
+        Route="wow" />
+
 </Shell>

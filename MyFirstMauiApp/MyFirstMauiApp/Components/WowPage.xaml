@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyFirstMauiApp"
+    xmlns:shared="clr-namespace:MyFirstMauiApp.Shared;assembly=MyFirstMauiApp.Shared"
+    x:Class="MyFirstMauiApp.WowPage">
+
+    <Grid>
+        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index-mobile.html" StartPath="counter">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </Grid>
+
+</ContentPage>
